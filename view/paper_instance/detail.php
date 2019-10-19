@@ -35,7 +35,11 @@
                         </div>
 
                         <div class="layui-input-block">
-                        @foreach ($question->selections as $selection)
+                        @php
+                        $selections = $question->selections;
+                        shuffle($selections);
+                        @endphp
+                        @foreach ($selections as $selection)
                         <div class="layui-input-inline">
                             <input type="checkbox" name="selections[]" title="{{ $selection->description }}" lay-skin="primary" value="{{ $selection->id }}">
                         </div>

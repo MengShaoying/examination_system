@@ -16,4 +16,6 @@ queue_job('paper_instance_timeout', function ($data) {/*{{{*/
 
     log_module('queue', 'paper_instance '.$data['paper_instance_id'].' timeout');
 
+    return true;
+
 }, 10, [1, 1, 1], 'default');/*}}}*/

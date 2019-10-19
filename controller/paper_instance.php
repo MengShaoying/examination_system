@@ -69,6 +69,8 @@ if_get('/my_paper_instances/ajax', function ()
                 [
                     'id' => $paper_instance->id,
                     'examination_start_time_range' => implode_examination_start_time_rannge($paper_instance->examination),
+                    'early_examination_start_time' => $paper_instance->examination->early_examination_start_time,
+                    'last_examination_start_time' => $paper_instance->examination->last_examination_start_time,
                     'paper_template_title' => $paper_instance->examination->paper_template->title,
                     'start_time' => $paper_instance->start_time,
                     'total_score' => $paper_instance->total_score,
@@ -122,6 +124,7 @@ if_post('/paper_instances/detail/*', function ($paper_instance_id)
 {
     $paper_instance = dao('paper_instance')->find($paper_instance_id);
     otherwise($paper_instance->is_not_null(), 'paper_instance not found');
+    otherwise($paper_instance->status_is_init(), '试卷已经是'.$paper_instance->get_status_description().'状态');
 
     $paper_instance_question_answers = $paper_instance->paper_instance_question_answers;
 

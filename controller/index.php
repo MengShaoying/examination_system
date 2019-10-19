@@ -38,5 +38,5 @@ if_get('/', function ()
 
 if_get('/dashboard', function ()
 {
-    return 'dashboard';
+    return '';
 });
