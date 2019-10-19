@@ -16,6 +16,16 @@ structs:
         display_name: 密码
         description: 密码
         allow_null: false
+    role:
+        type: varchar(45)
+        format:
+            admin: 管理员
+            teacher: 老师
+            student: 考生
+        format_description: ~
+        display_name: 角色
+        description: 角色
+        allow_null: false
 relationships: []
 snaps: []
 ...

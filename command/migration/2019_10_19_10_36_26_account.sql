@@ -7,6 +7,7 @@ CREATE TABLE `account` (
     `delete_time` datetime DEFAULT NULL,
     `name` varchar(45) NOT NULL,
     `password` varchar(45) NOT NULL,
+    `role` varchar(45) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

@@ -8,9 +8,9 @@ if_get('/accounts', function ()
 if_get('/accounts/ajax', function ()
 {
     list(
-        $inputs['name'], $inputs['password']
+        $inputs['name'], $inputs['password'], $inputs['role']
     ) = input_list(
-        'name', 'password'
+        'name', 'password', 'role'
     );
     $inputs = array_filter($inputs, 'not_null');
 
@@ -27,6 +27,7 @@ if_get('/accounts/ajax', function ()
                     'id' => $account->id,
                     'name' => $account->name,
                     'password' => $account->password,
+                    'role' => $account->get_role_description(),
                     'create_time' => $account->create_time,
                     'update_time' => $account->update_time,
                 ]
@@ -46,6 +47,7 @@ if_post('/accounts/add', function ()
 
     $account->name = input('name');
     $account->password = input('password');
+    $account->role = input('role');
 
     return redirect('/accounts');
 });
@@ -69,6 +71,7 @@ if_post('/accounts/update/*', function ($account_id)
 
     $account->name = input('name');
     $account->password = input('password');
+    $account->role = input('role');
 
     redirect('/accounts');
 });

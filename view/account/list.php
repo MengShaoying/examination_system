@@ -52,7 +52,7 @@
       ,height: 'full-100'
       ,cellMinWidth: 80
       ,page: false
-      ,cols: [[{"field":"id","title":"ID","sort":true},{"field":"name","title":"姓名","sort":true,"align":"center"},{"field":"password","title":"密码","sort":true,"align":"center"},{"field":"create_time","title":"添加时间","sort":true},{"field":"update_time","title":"修改时间","sort":true},{"fixed":"right","title":"操作","toolbar":"#account-table-bar","width":150}]]
+      ,cols: [[{"field":"id","title":"ID","sort":true},{"field":"name","title":"姓名","sort":true,"align":"center"},{"field":"password","title":"密码","sort":true,"align":"center"},{"field":"role","title":"角色","sort":true,"align":"center"},{"field":"create_time","title":"添加时间","sort":true},{"field":"update_time","title":"修改时间","sort":true},{"fixed":"right","title":"操作","toolbar":"#account-table-bar","width":150}]]
     });
 
     table.on('toolbar(account-table)', function(obj) {
