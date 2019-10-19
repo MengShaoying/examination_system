@@ -1,0 +1,27 @@
+---
+display_name: 试卷
+description: 管理试卷
+structs:
+    start_time:
+        type: varchar(45)
+        format: ~
+        format_description: ~
+        display_name: 开始时间
+        description: 开始时间
+        allow_null: false
+    total_score:
+        type: int(11)
+        format: ~
+        format_description: ~
+        display_name: 总分
+        description: 总分
+        allow_null: false
+relationships:
+    examination:
+        entity: examination
+        type: belongs_to
+    account:
+        entity: account
+        type: belongs_to
+snaps: []
+...

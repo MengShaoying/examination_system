@@ -22,10 +22,10 @@ then
             rm -rf $PROJECT_PATH/command/migration/*_$entity_name.sql
             rm -rf $PROJECT_PATH/controller/$entity_name.php
 
-            grep -v \/$entity_name $PROJECT_PATH/public/index.php > /tmp/index.php
+            grep -v "'\/$entity_name\." $PROJECT_PATH/public/index.php > /tmp/index.php
             mv /tmp/index.php $PROJECT_PATH/public/index.php
 
-            grep -v \/$entity_name $PROJECT_PATH/controller/index.php > /tmp/controller_index.php
+            grep -v "'$entity_name'" $PROJECT_PATH/controller/index.php > /tmp/controller_index.php
             mv /tmp/controller_index.php $PROJECT_PATH/controller/index.php
 
             if [ "$event" == "CREATE" ];then

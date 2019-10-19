@@ -1,0 +1,13 @@
+---
+display_name: 试卷模版问题关联
+description: 管理试卷模版问题关联
+structs: []
+relationships:
+    paper_template:
+        entity: paper_template
+        type: belongs_to
+    question:
+        entity: question
+        type: belongs_to
+snaps: []
+...

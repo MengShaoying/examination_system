@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>考试[{{ $examination->id }}]修改</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+</head>
+<body>
+
+  <div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+      <div class="layui-col-md12">
+        <div class="layui-card">
+          <div class="layui-card-header"></div>
+          <div class="layui-card-body">
+            <form class="layui-form" action="" method="POST" lay-filter="component-form-element">
+
+
+              <div class="layui-row layui-col-space10 layui-form-item">
+                <div class="layui-col-lg6">
+                  <label class="layui-form-label">最早考试开始时间：</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="early_examination_start_time" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value='{{ $examination->early_examination_start_time }}'>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="layui-row layui-col-space10 layui-form-item">
+                <div class="layui-col-lg6">
+                  <label class="layui-form-label">最晚考试开始时间：</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="last_examination_start_time" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value='{{ $examination->last_examination_start_time }}'>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="layui-row layui-col-space10 layui-form-item">
+                <div class="layui-col-lg6">
+                  <label class="layui-form-label">考试说明：</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="description" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value='{{ $examination->description }}'>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="layui-row layui-col-space10 layui-form-item">
+                <div class="layui-col-lg6">
+                  <label class="layui-form-label">随机选题数量：</label>
+                  <div class="layui-input-block">
+                    <input type="number" name="random_question_count" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value='{{ $examination->random_question_count }}'>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="layui-row layui-col-space10 layui-form-item">
+                <div class="layui-col-lg6">
+                  <label class="layui-form-label">试卷模版ID：</label>
+                  <div class="layui-input-block">
+                    <input type="number" name="paper_template_id" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value='{{ $examination->paper_template_id }}'>
+                  </div>
+                </div>
+              </div>
+
+              <div class="layui-form-item">
+                <div class="layui-input-block">
+                  <button class="layui-btn" lay-submit lay-filter="component-form-element">立即修改</button>
+                  <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="/layuiadmin/layui/layui.js"></script>  
+  <script>
+  layui.config({
+    base: '/layuiadmin/'
+  }).extend({
+    index: 'lib/index'
+  }).use(['index', 'form'], function(){
+    var $ = layui.$
+    ,admin = layui.admin
+    ,element = layui.element
+    ,form = layui.form;
+    
+    form.render(null, 'component-form-element');
+    element.render('breadcrumb', 'breadcrumb');
+    
+    form.on('submit(component-form-element)', function(data){
+      return true;
+    });
+  });
+  </script>
+</body>
+</html>

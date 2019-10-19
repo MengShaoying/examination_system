@@ -1,0 +1,13 @@
+---
+display_name: 答题选项
+description: 管理答题选项
+structs: []
+relationships:
+    paper_instance_question_answer:
+        entity: paper_instance_question_answer
+        type: belongs_to
+    selection:
+        entity: selection
+        type: belongs_to
+snaps: []
+...

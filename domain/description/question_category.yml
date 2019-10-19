@@ -1,0 +1,14 @@
+---
+display_name: 问题分类
+description: 管理问题分类
+structs:
+    name:
+        type: varchar(45)
+        format: ~
+        format_description: ~
+        display_name: 名称
+        description: 名称
+        allow_null: false
+relationships: []
+snaps: []
+...

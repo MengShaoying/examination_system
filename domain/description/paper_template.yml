@@ -1,0 +1,14 @@
+---
+display_name: 试卷模版
+description: 管理试卷模版
+structs:
+    title:
+        type: varchar(45)
+        format: ~
+        format_description: ~
+        display_name: 标题
+        description: 标题
+        allow_null: false
+relationships: []
+snaps: []
+...

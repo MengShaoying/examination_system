@@ -1,0 +1,27 @@
+---
+display_name: 试卷问题答案
+description: 管理试卷问题答案
+structs:
+    score:
+        type: int(11)
+        format: ~
+        format_description: ~
+        display_name: 分值
+        description: 分值
+        allow_null: false
+    sequence:
+        type: int(11)
+        format: ~
+        format_description: ~
+        display_name: 题号
+        description: 题号
+        allow_null: false
+relationships:
+    paper_instance:
+        entity: paper_instance
+        type: belongs_to
+    paper_template_question:
+        entity: paper_template_question
+        type: belongs_to
+snaps: []
+...

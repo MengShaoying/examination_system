@@ -1,0 +1,38 @@
+---
+display_name: 考试
+description: 管理考试
+structs:
+    early_examination_start_time:
+        type: datetime
+        format: ~
+        format_description: ~
+        display_name: 最早考试开始时间
+        description: 最早考试开始时间
+        allow_null: false
+    last_examination_start_time:
+        type: datetime
+        format: ~
+        format_description: ~
+        display_name: 最晚考试开始时间
+        description: 最晚考试开始时间
+        allow_null: false
+    description:
+        type: varchar(1000)
+        format: ~
+        format_description: ~
+        display_name: 考试说明
+        description: 考试说明
+        allow_null: false
+    random_question_count:
+        type: int(11)
+        format: ~
+        format_description: ~
+        display_name: 随机选题数量
+        description: 随机选题数量
+        allow_null: false
+relationships:
+    paper_template:
+        entity: paper_template
+        type: belongs_to
+snaps: []
+...

@@ -1,0 +1,21 @@
+---
+display_name: 账号
+description: 管理登录所使用的账户
+structs:
+    name:
+        type: varchar(45)
+        format: ~
+        format_description: ~
+        display_name: 姓名
+        description: 姓名
+        allow_null: false
+    password:
+        type: varchar(45)
+        format: ~
+        format_description: ~
+        display_name: 密码
+        description: 密码
+        allow_null: false
+relationships: []
+snaps: []
+...

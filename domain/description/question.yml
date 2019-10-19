@@ -1,0 +1,33 @@
+---
+display_name: 问题
+description: 管理问题
+structs:
+    description:
+        type: varchar(1000)
+        format: ~
+        format_description: ~
+        display_name: 题目
+        description: 题目
+        allow_null: false
+    selection_type:
+        type: varchar(45)
+        format:
+            single: 单选
+            multi: 多选
+        format_description: ~
+        display_name: 选项类型
+        description: 选项类型
+        allow_null: false
+    score:
+        type: int(11)
+        format: ~
+        format_description: ~
+        display_name: 分值
+        description: 分值
+        allow_null: false
+relationships:
+    question_category:
+        entity: question_category
+        type: belongs_to
+snaps: []
+...

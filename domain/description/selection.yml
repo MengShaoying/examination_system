@@ -1,0 +1,33 @@
+---
+display_name: 选项
+description: 管理选项
+structs:
+    description:
+        type: varchar(45)
+        format: ~
+        format_description: ~
+        display_name: 描述
+        description: 描述
+        allow_null: false
+    is_right:
+        type: varchar(45)
+        format:
+            YES: 正确
+            NO: 错误
+        format_description: ~
+        display_name: 是否正确答案
+        description: 是否正确答案
+        allow_null: false
+    score:
+        type: int(11)
+        format: ~
+        format_description: ~
+        display_name: 分值
+        description: 分值
+        allow_null: false
+relationships:
+    question:
+        entity: question
+        type: belongs_to
+snaps: []
+...
