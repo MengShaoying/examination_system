@@ -57,6 +57,7 @@ if_not_found(function () {
 });
 
 // init controller
+include CONTROLLER_DIR.'/paper_template_question.php';
 include CONTROLLER_DIR.'/paper_instance_question_answer.php';
 include CONTROLLER_DIR.'/examination.php';
 include CONTROLLER_DIR.'/paper_template.php';
@@ -64,7 +65,6 @@ include CONTROLLER_DIR.'/question.php';
 include CONTROLLER_DIR.'/account.php';
 include CONTROLLER_DIR.'/answer_selection.php';
 include CONTROLLER_DIR.'/paper_instance.php';
-include CONTROLLER_DIR.'/paper_template_question.php';
 include CONTROLLER_DIR.'/selection.php';
 include CONTROLLER_DIR.'/question_category.php';
 include CONTROLLER_DIR.'/index.php';
