@@ -11,9 +11,7 @@ if_get('/', function ()
                 'children' => [
                     [ 'name' => '问题分类管理', 'key' => 'question_category', 'href' => '/question_categories', ],
                     [ 'name' => '问题管理', 'key' => 'question', 'href' => '/questions', ],
-                    [ 'name' => '选项管理', 'key' => 'selection', 'href' => '/selections', ],
                     [ 'name' => '试卷模版管理', 'key' => 'paper_template', 'href' => '/paper_templates', ],
-                    [ 'name' => '试卷模版问题关联管理', 'key' => 'paper_template_question', 'href' => '/paper_template_questions', ],
                 ],
             ],
             [

@@ -8,9 +8,9 @@ if_get('/examinations', function ()
 if_get('/examinations/ajax', function ()
 {
     list(
-        $inputs['early_examination_start_time'], $inputs['last_examination_start_time'], $inputs['description'], $inputs['random_question_count'], $inputs['paper_template_id']
+        $inputs['early_examination_start_time'], $inputs['last_examination_start_time'], $inputs['description'], $inputs['paper_template_id']
     ) = input_list(
-        'early_examination_start_time', 'last_examination_start_time', 'description', 'random_question_count', 'paper_template_id'
+        'early_examination_start_time', 'last_examination_start_time', 'description', 'paper_template_id'
     );
     $inputs = array_filter($inputs, 'not_null');
 
@@ -28,7 +28,6 @@ if_get('/examinations/ajax', function ()
                     'early_examination_start_time' => $examination->early_examination_start_time,
                     'last_examination_start_time' => $examination->last_examination_start_time,
                     'description' => $examination->description,
-                    'random_question_count' => $examination->random_question_count,
                     'paper_template_id' => $examination->paper_template_id,
                     'create_time' => $examination->create_time,
                     'update_time' => $examination->update_time,
@@ -50,7 +49,6 @@ if_post('/examinations/add', function ()
     $examination->early_examination_start_time = input('early_examination_start_time');
     $examination->last_examination_start_time = input('last_examination_start_time');
     $examination->description = input('description');
-    $examination->random_question_count = input('random_question_count');
     $examination->paper_template_id = input('paper_template_id');
 
     return redirect('/examinations');
@@ -76,7 +74,6 @@ if_post('/examinations/update/*', function ($examination_id)
     $examination->early_examination_start_time = input('early_examination_start_time');
     $examination->last_examination_start_time = input('last_examination_start_time');
     $examination->description = input('description');
-    $examination->random_question_count = input('random_question_count');
     $examination->paper_template_id = input('paper_template_id');
 
     redirect('/examinations');

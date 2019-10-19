@@ -18,13 +18,6 @@ structs:
         display_name: 是否正确答案
         description: 是否正确答案
         allow_null: false
-    score:
-        type: int(11)
-        format: ~
-        format_description: ~
-        display_name: 分值
-        description: 分值
-        allow_null: false
 relationships:
     question:
         entity: question

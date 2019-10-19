@@ -29,6 +29,27 @@
                 </div>
               </div>
 
+
+              <div class="layui-row layui-col-space10 layui-form-item">
+                <div class="layui-col-lg6">
+                  <label class="layui-form-label">随机选题数量：</label>
+                  <div class="layui-input-block">
+                    <input type="number" name="random_question_count" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                  </div>
+                </div>
+              </div>
+
+              <div class="layui-row layui-col-space10 layui-form-item">
+                 <div class="layui-col-lg6">
+                  <label class="layui-form-label">试卷题目：</label>
+                   @foreach ($questions as $question)
+                   <div class="layui-input-block">
+                   <input type="checkbox" name="questions[]" title="{{ '['.$question->get_selection_type_description().'] '.$question->description }}" lay-skin="primary" value="{{ $question->id }}">
+                  </div>
+                   @endforeach
+                 </div>
+              </div>
+
               <div class="layui-form-item">
                 <div class="layui-input-block">
                   <button class="layui-btn" lay-submit lay-filter="component-form-element">立即添加</button>

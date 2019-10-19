@@ -22,9 +22,24 @@
 
               <div class="layui-row layui-col-space10 layui-form-item">
                 <div class="layui-col-lg6">
+                  <label class="layui-form-label">问题分类：</label>
+                  <div class="layui-input-block">
+
+                    <select name="question_category_id" lay-verify="required" lay-filter="aihao" lay-search>
+                    @foreach ($question_categories as $question_category)
+                        <option value="{{ $question_category->id }}" {{ $question_category->id === $question->question_category_id?'selected':'' }}>{{ '[ID:'.$question_category->id.'] '.$question_category->name }}</option>
+                    @endforeach
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="layui-row layui-col-space10 layui-form-item">
+                <div class="layui-col-lg6">
                   <label class="layui-form-label">题目：</label>
                   <div class="layui-input-block">
-                    <input type="text" name="description" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value='{{ $question->description }}'>
+                    <textarea name="description" placeholder="" class="layui-textarea">{{ $question->description }}</textarea>
                   </div>
                 </div>
               </div>
@@ -48,16 +63,6 @@
                   <label class="layui-form-label">分值：</label>
                   <div class="layui-input-block">
                     <input type="number" name="score" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value='{{ $question->score }}'>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="layui-row layui-col-space10 layui-form-item">
-                <div class="layui-col-lg6">
-                  <label class="layui-form-label">问题分类ID：</label>
-                  <div class="layui-input-block">
-                    <input type="number" name="question_category_id" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value='{{ $question->question_category_id }}'>
                   </div>
                 </div>
               </div>

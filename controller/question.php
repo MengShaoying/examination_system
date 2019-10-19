@@ -29,6 +29,7 @@ if_get('/questions/ajax', function ()
                     'selection_type' => $question->get_selection_type_description(),
                     'score' => $question->score,
                     'question_category_id' => $question->question_category_id,
+                    'question_category_name' => $question->question_category->name,
                     'create_time' => $question->create_time,
                     'update_time' => $question->update_time,
                 ]
@@ -39,7 +40,11 @@ if_get('/questions/ajax', function ()
 
 if_get('/questions/add', function ()
 {
-    return render('question/add');
+    $question_categories = dao('question_category')->find_all();
+
+    return render('question/add', [
+        'question_categories' => $question_categories,
+    ]);
 });
 
 if_post('/questions/add', function ()
@@ -61,7 +66,10 @@ if_get('/questions/update/*', function ($question_id)
     $question = dao('question')->find($question_id);
     otherwise($question->is_not_null(), 'question not found');
 
+    $question_categories = dao('question_category')->find_all();
+
     return render('question/update', [
+        'question_categories' => $question_categories,
         'question' => $question,
     ]);
 });

@@ -6,7 +6,6 @@ class examination extends entity
         'early_examination_start_time' => '',
         'last_examination_start_time' => '',
         'description' => '',
-        'random_question_count' => '',
         'paper_template_id' => '',
     ];
 
@@ -17,7 +16,6 @@ class examination extends entity
         'early_examination_start_time' => 'text',
         'last_examination_start_time' => 'text',
         'description' => 'text',
-        'random_question_count' => 'number',
         'paper_template_id' => 'number',
     ];
 
@@ -25,7 +23,6 @@ class examination extends entity
         'early_examination_start_time' => '最早考试开始时间',
         'last_examination_start_time' => '最晚考试开始时间',
         'description' => '考试说明',
-        'random_question_count' => '随机选题数量',
         'paper_template_id' => '试卷模版ID',
     ];
 
@@ -33,7 +30,6 @@ class examination extends entity
         'early_examination_start_time' => '最早考试开始时间',
         'last_examination_start_time' => '最晚考试开始时间',
         'description' => '考试说明',
-        'random_question_count' => '随机选题数量',
         'paper_template_id' => '试卷模版ID',
     ];
 

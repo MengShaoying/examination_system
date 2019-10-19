@@ -15,7 +15,9 @@
     <div class="layui-row layui-col-space15">
       <div class="layui-col-md12">
         <div class="layui-card">
-          <div class="layui-card-header">管理选项</div>
+          <div class="layui-card-header">
+            {{ '['.$question->get_selection_type_description().' ('.$question->score.'分)] '.$question->description }}
+          </div>
           <div class="layui-card-body">
             <table class="layui-hide" id="selection-table" lay-filter="selection-table"></table>
 
@@ -47,18 +49,18 @@
   
     table.render({
        elem: '#selection-table'
-      ,url: '/selections/ajax'
+      ,url: '/selections/ajax?question_id={{ $question->id }}'
       ,toolbar: '#selection-table-toolbar'
       ,height: 'full-100'
       ,cellMinWidth: 80
       ,page: false
-      ,cols: [[{"field":"id","title":"ID","sort":true},{"field":"description","title":"描述","sort":true,"align":"center"},{"field":"is_right","title":"是否正确答案","sort":true,"align":"center"},{"field":"score","title":"分值","sort":true,"align":"right"},{"field":"question_id","title":"问题ID","sort":true,"align":"right"},{"field":"create_time","title":"添加时间","sort":true},{"field":"update_time","title":"修改时间","sort":true},{"fixed":"right","title":"操作","toolbar":"#selection-table-bar","width":150}]]
+      ,cols: [[{"field":"id","title":"ID","sort":true},{"field":"description","title":"描述","sort":true,"align":"center"},{"field":"is_right","title":"是否正确答案","sort":true,"align":"center"},{"field":"create_time","title":"添加时间","sort":true},{"field":"update_time","title":"修改时间","sort":true},{"fixed":"right","title":"操作","toolbar":"#selection-table-bar","width":150}]]
     });
 
     table.on('toolbar(selection-table)', function(obj) {
       switch (obj.event) {
         case 'add':
-            window.location.href = '/selections/add';
+            window.location.href = '/selections/add?question_id={{ $question->id }}';
         break;
       };
     });

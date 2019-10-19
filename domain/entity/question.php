@@ -52,6 +52,7 @@ class question extends entity
     public function __construct()
     {/*{{{*/
         $this->belongs_to('question_category');
+        $this->has_many('selections', 'selection');
     }/*}}}*/
 
     public static function create()
@@ -60,8 +61,41 @@ class question extends entity
     }/*}}}*/
 
     public function get_selection_type_description()
-    {
+    {/*{{{*/
         return self::SELECTION_TYPE_MAPS[$this->selection_type];
-    }
+    }/*}}}*/
+
+    public function set_selection_type_single()
+    {/*{{{*/
+        $this->selection_type = self::SELECTION_TYPE_SINGLE;
+    }/*}}}*/
+
+    public function set_selection_type_multi()
+    {/*{{{*/
+        $this->selection_type = self::SELECTION_TYPE_MULTI;
+    }/*}}}*/
+
+    public function selection_type_is_single()
+    {/*{{{*/
+        return $this->selection_type === self::SELECTION_TYPE_SINGLE;
+    }/*}}}*/
+
+    public function selection_type_is_multi()
+    {/*{{{*/
+        return $this->selection_type === self::SELECTION_TYPE_MULTI;
+    }/*}}}*/
+
+    public function has_right_selection()
+    {/*{{{*/
+        foreach ($this->selections as $selection) {
+
+            if ($selection->is_right_yes()) {
+
+                return true;
+            }
+        }
+
+        return false;
+    }/*}}}*/
 
 }

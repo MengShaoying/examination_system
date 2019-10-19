@@ -6,6 +6,7 @@ CREATE TABLE `paper_template` (
     `update_time` datetime DEFAULT NULL,
     `delete_time` datetime DEFAULT NULL,
     `title` varchar(45) NOT NULL,
+    `random_question_count` int(11) NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

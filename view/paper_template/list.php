@@ -52,7 +52,7 @@
       ,height: 'full-100'
       ,cellMinWidth: 80
       ,page: false
-      ,cols: [[{"field":"id","title":"ID","sort":true},{"field":"title","title":"标题","sort":true,"align":"center"},{"field":"create_time","title":"添加时间","sort":true},{"field":"update_time","title":"修改时间","sort":true},{"fixed":"right","title":"操作","toolbar":"#paper_template-table-bar","width":150}]]
+      ,cols: [[{"field":"id","title":"ID","sort":true},{"field":"title","title":"标题","sort":true,"align":"center"},{"field":"create_time","title":"添加时间","sort":true},{"field":"random_question_count","title":"随机选题数量","sort":true,"align":"right"},{"field":"update_time","title":"修改时间","sort":true},{"fixed":"right","title":"操作","toolbar":"#paper_template-table-bar","width":150}]]
     });
 
     table.on('toolbar(paper_template-table)', function(obj) {

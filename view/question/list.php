@@ -26,6 +26,7 @@
             </script>
 
             <script type="text/html" id="question-table-bar">
+              <a class="layui-btn layui-btn-xs" lay-event="detail">详情</a>
               <a class="layui-btn layui-btn-xs" lay-event="update">修改</a>
               <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
             </script>
@@ -52,7 +53,7 @@
       ,height: 'full-100'
       ,cellMinWidth: 80
       ,page: false
-      ,cols: [[{"field":"id","title":"ID","sort":true},{"field":"description","title":"题目","sort":true,"align":"center"},{"field":"selection_type","title":"选项类型","sort":true,"align":"center"},{"field":"score","title":"分值","sort":true,"align":"right"},{"field":"question_category_id","title":"问题分类ID","sort":true,"align":"right"},{"field":"create_time","title":"添加时间","sort":true},{"field":"update_time","title":"修改时间","sort":true},{"fixed":"right","title":"操作","toolbar":"#question-table-bar","width":150}]]
+      ,cols: [[{"field":"id","title":"ID","sort":true},{"field":"description","title":"题目","sort":true,"align":"center"},{"field":"selection_type","title":"选项类型","sort":true,"align":"center"},{"field":"score","title":"分值","sort":true,"align":"right"},{"field":"question_category_name","title":"问题分类","sort":true,"align":"right"},{"field":"create_time","title":"添加时间","sort":true},{"field":"update_time","title":"修改时间","sort":true},{"fixed":"right","title":"操作","toolbar":"#question-table-bar","width":150}]]
     });
 
     table.on('toolbar(question-table)', function(obj) {
@@ -79,6 +80,8 @@
         });
       } else if (obj.event === 'update') {
           window.location.href = '/questions/update/'+data.id;
+      } else if (obj.event === 'detail') {
+          window.location.href = '/selections?question_id='+data.id;
       }
     });
     

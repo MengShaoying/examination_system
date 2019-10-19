@@ -8,7 +8,6 @@ CREATE TABLE `examination` (
     `early_examination_start_time` datetime NOT NULL,
     `last_examination_start_time` datetime NOT NULL,
     `description` varchar(1000) NOT NULL,
-    `random_question_count` int(11) NOT NULL,
     `paper_template_id` bigint(20) NOT NULL,
     KEY `fk_paper_template_idx` (`paper_template_id`, `delete_time`),
     PRIMARY KEY (`id`)

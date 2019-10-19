@@ -19,6 +19,18 @@
           <div class="layui-card-body">
             <form class="layui-form" action="" method="POST" lay-filter="component-form-element">
 
+              <div class="layui-row layui-col-space10 layui-form-item">
+                  <div class="layui-col-lg6">
+                      <fieldset class="layui-elem-field">
+                        <legend>{{ $question->get_selection_type_description().' '.$question->score.' 分' }}</legend>
+                        <div class="layui-field-box">
+                          {{ $question->description }}
+                        </div>
+                      </fieldset>
+                </div>
+              </div>
+
+              <input type="hidden" name="question_id" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="{{ $question->id }}">
 
               <div class="layui-row layui-col-space10 layui-form-item">
                 <div class="layui-col-lg6">
@@ -35,32 +47,13 @@
                   <label class="layui-form-label">是否正确答案：</label>
                   <div class="layui-input-block">
                     
-<input type="radio" name="is_right" value="1" title="正确">
-<input type="radio" name="is_right" value="" title="错误">
+                    <input type="radio" name="is_right" value="{{ selection::IS_RIGHT_YES }}" title="正确">
+                    <input type="radio" name="is_right" value="{{ selection::IS_RIGHT_NO }}" title="错误">
 
                   </div>
                 </div>
               </div>
 
-
-              <div class="layui-row layui-col-space10 layui-form-item">
-                <div class="layui-col-lg6">
-                  <label class="layui-form-label">分值：</label>
-                  <div class="layui-input-block">
-                    <input type="number" name="score" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="layui-row layui-col-space10 layui-form-item">
-                <div class="layui-col-lg6">
-                  <label class="layui-form-label">问题ID：</label>
-                  <div class="layui-input-block">
-                    <input type="number" name="question_id" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-                  </div>
-                </div>
-              </div>
 
               <div class="layui-form-item">
                 <div class="layui-input-block">

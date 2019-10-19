@@ -2,15 +2,19 @@
 
 if_get('/selections', function ()
 {
-    return render('selection/list');
+    $question = input_entity('question');
+
+    return render('selection/list', [
+        'question' => $question,
+    ]);
 });
 
 if_get('/selections/ajax', function ()
 {
     list(
-        $inputs['description'], $inputs['is_right'], $inputs['score'], $inputs['question_id']
+        $inputs['description'], $inputs['is_right'], $inputs['question_id']
     ) = input_list(
-        'description', 'is_right', 'score', 'question_id'
+        'description', 'is_right', 'question_id'
     );
     $inputs = array_filter($inputs, 'not_null');
 
@@ -27,8 +31,6 @@ if_get('/selections/ajax', function ()
                     'id' => $selection->id,
                     'description' => $selection->description,
                     'is_right' => $selection->get_is_right_description(),
-                    'score' => $selection->score,
-                    'question_id' => $selection->question_id,
                     'create_time' => $selection->create_time,
                     'update_time' => $selection->update_time,
                 ]
@@ -39,19 +41,30 @@ if_get('/selections/ajax', function ()
 
 if_get('/selections/add', function ()
 {
-    return render('selection/add');
+    $question = input_entity('question');
+
+    return render('selection/add', [
+        'question' => $question,
+    ]);
 });
 
 if_post('/selections/add', function ()
 {
-    $selection = selection::create();
+    $question = input_entity('question');
 
-    $selection->description = input('description');
-    $selection->is_right = input('is_right');
-    $selection->score = input('score');
-    $selection->question_id = input('question_id');
+    $is_right = input('is_right');
 
-    return redirect('/selections');
+    if ($question->selection_type_is_single()) {
+
+        if ($is_right === selection::IS_RIGHT_YES) {
+
+            otherwise(! $question->has_right_selection(), '已经存在正确的选项');
+        }
+    }
+
+    $selection = selection::create($question, input('description'), $is_right);
+
+    return redirect('/selections?question_id='.$selection->question_id);
 });
 
 //todo::detail
@@ -63,6 +76,7 @@ if_get('/selections/update/*', function ($selection_id)
 
     return render('selection/update', [
         'selection' => $selection,
+        'question' => $selection->question,
     ]);
 });
 
@@ -73,10 +87,9 @@ if_post('/selections/update/*', function ($selection_id)
 
     $selection->description = input('description');
     $selection->is_right = input('is_right');
-    $selection->score = input('score');
     $selection->question_id = input('question_id');
 
-    redirect('/selections');
+    redirect('/selections?question_id='.$selection->question_id);
 });
 
 if_post('/selections/delete/*', function ($selection_id)

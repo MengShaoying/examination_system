@@ -58,7 +58,6 @@ if_not_found(function () {
 
 // init controller
 include CONTROLLER_DIR.'/account.php';
-include CONTROLLER_DIR.'/paper_template_question.php';
 include CONTROLLER_DIR.'/paper_instance_question_answer.php';
 include CONTROLLER_DIR.'/examination.php';
 include CONTROLLER_DIR.'/paper_template.php';

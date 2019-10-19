@@ -7,7 +7,6 @@ CREATE TABLE `selection` (
     `delete_time` datetime DEFAULT NULL,
     `description` varchar(45) NOT NULL,
     `is_right` varchar(45) NOT NULL,
-    `score` int(11) NOT NULL,
     `question_id` bigint(20) NOT NULL,
     KEY `fk_question_idx` (`question_id`, `delete_time`),
     PRIMARY KEY (`id`)
