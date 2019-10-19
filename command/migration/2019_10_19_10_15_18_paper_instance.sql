@@ -9,6 +9,7 @@ CREATE TABLE `paper_instance` (
     `total_score` int(11) NOT NULL,
     `examination_id` bigint(20) NOT NULL,
     `account_id` bigint(20) NOT NULL,
+    `status` varchar(45) NOT NULL,
     KEY `fk_examination_idx` (`examination_id`, `delete_time`),
     KEY `fk_account_idx` (`account_id`, `delete_time`),
     PRIMARY KEY (`id`)

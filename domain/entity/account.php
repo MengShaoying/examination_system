@@ -58,8 +58,8 @@ class account extends entity
     }/*}}}*/
 
     public function get_role_description()
-    {
+    {/*{{{*/
         return self::ROLE_MAPS[$this->role];
-    }
+    }/*}}}*/
 
 }

@@ -45,6 +45,7 @@ class paper_instance_question_answer extends entity
     {/*{{{*/
         $this->belongs_to('paper_instance');
         $this->belongs_to('paper_template_question');
+        $this->has_many('answer_selections', 'answer_selection');
     }/*}}}*/
 
     public static function create()
