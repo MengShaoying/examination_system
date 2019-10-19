@@ -6,6 +6,7 @@ class examination extends entity
         'early_examination_start_time' => '',
         'last_examination_start_time' => '',
         'description' => '',
+        'last_second' => '',
         'paper_template_id' => '',
     ];
 
@@ -16,6 +17,7 @@ class examination extends entity
         'early_examination_start_time' => 'text',
         'last_examination_start_time' => 'text',
         'description' => 'text',
+        'last_second' => 'number',
         'paper_template_id' => 'number',
     ];
 
@@ -23,6 +25,7 @@ class examination extends entity
         'early_examination_start_time' => '最早考试开始时间',
         'last_examination_start_time' => '最晚考试开始时间',
         'description' => '考试说明',
+        'last_second' => '持续秒数',
         'paper_template_id' => '试卷模版ID',
     ];
 
@@ -30,6 +33,7 @@ class examination extends entity
         'early_examination_start_time' => '最早考试开始时间',
         'last_examination_start_time' => '最晚考试开始时间',
         'description' => '考试说明',
+        'last_second' => '持续秒数',
         'paper_template_id' => '试卷模版ID',
     ];
 
@@ -44,6 +48,7 @@ class examination extends entity
     public function __construct()
     {/*{{{*/
         $this->belongs_to('paper_template');
+        $this->has_many('paper_instances', 'paper_instance');
     }/*}}}*/
 
     public static function create()

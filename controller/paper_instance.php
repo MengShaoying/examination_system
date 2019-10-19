@@ -25,6 +25,8 @@ if_get('/paper_instances/ajax', function ()
                 null,
                 [
                     'id' => $paper_instance->id,
+                    'examination_start_time_range' => implode_examination_start_time_rannge($paper_instance->examination),
+                    'paper_template_title' => $paper_instance->examination->paper_template->title,
                     'start_time' => $paper_instance->start_time,
                     'total_score' => $paper_instance->total_score,
                     'examination_id' => $paper_instance->examination_id,
@@ -39,17 +41,24 @@ if_get('/paper_instances/ajax', function ()
 
 if_get('/paper_instances/add', function ()
 {
-    return render('paper_instance/add');
+    $examinations = dao('examination')->find_all();
+    $student_accounts = dao('account')->find_all_students();
+
+    return render('paper_instance/add', [
+        'examinations' => $examinations,
+        'student_accounts' => $student_accounts,
+    ]);
 });
 
 if_post('/paper_instances/add', function ()
 {
-    $paper_instance = paper_instance::create();
+    $examination = input_entity('examination');
 
-    $paper_instance->start_time = input('start_time');
-    $paper_instance->total_score = input('total_score');
-    $paper_instance->examination_id = input('examination_id');
-    $paper_instance->account_id = input('account_id');
+    foreach (input('accounts') as $account_id) {
+
+        $paper_instance = paper_instance::create($examination);
+        $paper_instance->account_id = $account_id;
+    }
 
     return redirect('/paper_instances');
 });
@@ -72,9 +81,6 @@ if_post('/paper_instances/update/*', function ($paper_instance_id)
     otherwise($paper_instance->is_not_null(), 'paper_instance not found');
 
     $paper_instance->start_time = input('start_time');
-    $paper_instance->total_score = input('total_score');
-    $paper_instance->examination_id = input('examination_id');
-    $paper_instance->account_id = input('account_id');
 
     redirect('/paper_instances');
 });

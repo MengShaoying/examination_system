@@ -52,7 +52,7 @@
       ,height: 'full-100'
       ,cellMinWidth: 80
       ,page: false
-      ,cols: [[{"field":"id","title":"ID","sort":true},{"field":"early_examination_start_time","title":"最早考试开始时间","sort":true,"align":"center"},{"field":"last_examination_start_time","title":"最晚考试开始时间","sort":true,"align":"center"},{"field":"description","title":"考试说明","sort":true,"align":"center"},{"field":"random_question_count","title":"随机选题数量","sort":true,"align":"right"},{"field":"paper_template_id","title":"试卷模版ID","sort":true,"align":"right"},{"field":"create_time","title":"添加时间","sort":true},{"field":"update_time","title":"修改时间","sort":true},{"fixed":"right","title":"操作","toolbar":"#examination-table-bar","width":150}]]
+      ,cols: [[{"field":"id","title":"ID","sort":true, "width": 100},{"field":"examination_start_time_range","title":"考试开始时间范围","sort":true,"align":"center", "width": 200},{"field":"last_second","title":"持续秒数","sort":true,"align":"center"},{"field":"description","title":"考试说明","sort":true,"align":"center"},{"field":"paper_template_title","title":"试卷模版","sort":true,"align":"right"},{"field":"create_time","title":"添加时间","sort":true},{"field":"update_time","title":"修改时间","sort":true},{"fixed":"right","title":"操作","toolbar":"#examination-table-bar","width":150}]]
     });
 
     table.on('toolbar(examination-table)', function(obj) {

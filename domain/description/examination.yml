@@ -23,13 +23,6 @@ structs:
         display_name: 考试说明
         description: 考试说明
         allow_null: false
-    random_question_count:
-        type: int(11)
-        format: ~
-        format_description: ~
-        display_name: 随机选题数量
-        description: 随机选题数量
-        allow_null: false
 relationships:
     paper_template:
         entity: paper_template

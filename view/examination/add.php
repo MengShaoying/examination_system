@@ -19,44 +19,57 @@
           <div class="layui-card-body">
             <form class="layui-form" action="" method="POST" lay-filter="component-form-element">
 
-
               <div class="layui-row layui-col-space10 layui-form-item">
                 <div class="layui-col-lg6">
-                  <label class="layui-form-label">最早考试开始时间：</label>
+                  <label class="layui-form-label">试卷模版：</label>
                   <div class="layui-input-block">
-                    <input type="text" name="early_examination_start_time" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+
+                    <select name="paper_template_id" lay-verify="required" lay-filter="aihao" lay-search>
+                    @foreach ($paper_templates as $paper_template)
+                        <option value="{{ $paper_template->id }}">{{ '[ID:'.$paper_template->id.'] '.$paper_template->title }}</option>
+                    @endforeach
+                    </select>
+
                   </div>
                 </div>
               </div>
 
-
               <div class="layui-row layui-col-space10 layui-form-item">
                 <div class="layui-col-lg6">
-                  <label class="layui-form-label">最晚考试开始时间：</label>
+                  <label class="layui-form-label">开考时间：</label>
                   <div class="layui-input-block">
-                    <input type="text" name="last_examination_start_time" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                    <input type="text" class="layui-input" name="examination_start_time_range" id="examination_start_time_range" placeholder=" ~ ">
                   </div>
                 </div>
               </div>
 
+              <div class="layui-row layui-col-space10 layui-form-item">
+                <div class="layui-col-lg6">
+                  <label class="layui-form-label">持续秒数：</label>
+                  <div class="layui-input-block">
+                    <input type="number" name="last_second" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                  </div>
+                </div>
+              </div>
 
               <div class="layui-row layui-col-space10 layui-form-item">
                 <div class="layui-col-lg6">
                   <label class="layui-form-label">考试说明：</label>
                   <div class="layui-input-block">
-                    <input type="text" name="description" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                    <textarea name="description" placeholder="" class="layui-textarea"></textarea>
                   </div>
                 </div>
               </div>
 
-
               <div class="layui-row layui-col-space10 layui-form-item">
-                <div class="layui-col-lg6">
-                  <label class="layui-form-label">试卷模版ID：</label>
-                  <div class="layui-input-block">
-                    <input type="number" name="paper_template_id" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                 <div class="layui-col-lg6">
+                  <label class="layui-form-label">发卷：</label>
+                   @foreach ($student_accounts as $account)
+                   <div class="layui-input-block">
+                   <input type="checkbox" name="accounts[]" title="{{ '[ID:'.$account->id.']'.$account->name }}" lay-skin="primary" value="{{ $account->id }}">
                   </div>
-                </div>
+                   @endforeach
+                 </div>
               </div>
 
               <div class="layui-form-item">
@@ -78,10 +91,11 @@
     base: '/layuiadmin/'
   }).extend({
     index: 'lib/index'
-  }).use(['index', 'form'], function(){
+  }).use(['index', 'form', 'laydate'], function(){
     var $ = layui.$
     ,admin = layui.admin
     ,element = layui.element
+    ,laydate = layui.laydate
     ,form = layui.form;
     
     form.render(null, 'component-form-element');
@@ -89,6 +103,11 @@
     
     form.on('submit(component-form-element)', function(data){
       return true;
+    });
+
+    laydate.render({
+    elem: '#examination_start_time_range'
+        ,range: '~'
     });
   });
   </script>

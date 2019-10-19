@@ -21,8 +21,7 @@ if_get('/', function ()
                 'children' => [
                     [ 'name' => '考试管理', 'key' => 'examination', 'href' => '/examinations', ],
                     [ 'name' => '试卷管理', 'key' => 'paper_instance', 'href' => '/paper_instances', ],
-                    [ 'name' => '试卷问题答案管理', 'key' => 'paper_instance_question_answer', 'href' => '/paper_instance_question_answers', ],
-                    [ 'name' => '答题选项管理', 'key' => 'answer_selection', 'href' => '/answer_selections', ],
+                    [ 'name' => '我的考卷', 'key' => 'my_paper_instance', 'href' => '/my_paper_instances', ],
                 ],
             ],
             [

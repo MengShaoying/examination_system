@@ -20,14 +20,14 @@ class paper_instance extends entity
     ];
 
     public static $struct_display_names = [
-        'start_time' => '开始时间',
+        'start_time' => '开考时间',
         'total_score' => '总分',
         'examination_id' => '考试ID',
         'account_id' => '账号ID',
     ];
 
     public static $struct_descriptions = [
-        'start_time' => '开始时间',
+        'start_time' => '开考时间',
         'total_score' => '总分',
         'examination_id' => '考试ID',
         'account_id' => '账号ID',
@@ -47,9 +47,30 @@ class paper_instance extends entity
         $this->belongs_to('account');
     }/*}}}*/
 
-    public static function create()
+    public static function create(examination $examination)
     {/*{{{*/
-        return parent::init();
+        $paper_template = $examination->paper_template;
+
+        $paper_template_questions = $paper_template->paper_template_questions;
+
+        $paper_instance = parent::init();
+
+        $paper_instance->examination = $examination;
+
+        $rand_paper_template_questions = (array) array_rand($paper_template_questions, $paper_template->random_question_count);
+
+        shuffle($rand_paper_template_questions);
+
+        foreach ($rand_paper_template_questions as $sequence => $paper_template_question_id) {
+
+            $paper_instance_question_answer = paper_instance_question_answer::create();
+
+            $paper_instance_question_answer->sequence = $sequence;
+            $paper_instance_question_answer->paper_instance = $paper_instance;
+            $paper_instance_question_answer->paper_template_question_id = $paper_template_question_id;
+        }
+
+        return $paper_instance;
     }/*}}}*/
 
 }

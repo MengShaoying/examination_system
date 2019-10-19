@@ -3,11 +3,11 @@ display_name: 试卷
 description: 管理试卷
 structs:
     start_time:
-        type: varchar(45)
+        type: datetime
         format: ~
         format_description: ~
-        display_name: 开始时间
-        description: 开始时间
+        display_name: 开考时间
+        description: 开考时间
         allow_null: false
     total_score:
         type: int(11)

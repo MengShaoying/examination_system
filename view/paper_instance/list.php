@@ -52,7 +52,70 @@
       ,height: 'full-100'
       ,cellMinWidth: 80
       ,page: false
-      ,cols: [[{"field":"id","title":"ID","sort":true},{"field":"start_time","title":"开始时间","sort":true,"align":"center"},{"field":"total_score","title":"总分","sort":true,"align":"right"},{"field":"examination_id","title":"考试ID","sort":true,"align":"right"},{"field":"account_id","title":"账号ID","sort":true,"align":"right"},{"field":"create_time","title":"添加时间","sort":true},{"field":"update_time","title":"修改时间","sort":true},{"fixed":"right","title":"操作","toolbar":"#paper_instance-table-bar","width":150}]]
+      ,cols: 
+[
+  [
+    {
+      "field": "id",
+      "title": "ID",
+      "sort": true,
+      "width": 100
+    },
+    {
+        "field": "examination_start_time_range",
+        "title": "考试开始时间范围",
+        "sort": true,
+        "align": "center",
+        "width": 200
+    },
+    {
+        "field": "paper_template_title",
+        "title": "考卷标题",
+        "sort": true,
+        "align": "center"
+    },
+    {
+      "field": "start_time",
+      "title": "开考时间",
+      "sort": true,
+      "align": "center"
+    },
+    {
+      "field": "total_score",
+      "title": "总分",
+      "sort": true,
+      "align": "right"
+    },
+    {
+      "field": "examination_id",
+      "title": "考试ID",
+      "sort": true,
+      "align": "right"
+    },
+    {
+      "field": "account_id",
+      "title": "账号ID",
+      "sort": true,
+      "align": "right"
+    },
+    {
+      "field": "create_time",
+      "title": "添加时间",
+      "sort": true
+    },
+    {
+      "field": "update_time",
+      "title": "修改时间",
+      "sort": true
+    },
+    {
+      "fixed": "right",
+      "title": "操作",
+      "toolbar": "#paper_instance-table-bar",
+      "width": 150
+    }
+  ]
+]
     });
 
     table.on('toolbar(paper_instance-table)', function(obj) {

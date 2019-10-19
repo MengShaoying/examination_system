@@ -22,41 +22,27 @@
 
               <div class="layui-row layui-col-space10 layui-form-item">
                 <div class="layui-col-lg6">
-                  <label class="layui-form-label">开始时间：</label>
+                  <label class="layui-form-label">考试：</label>
                   <div class="layui-input-block">
-                    <input type="text" name="start_time" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                    <select name="examination_id" lay-verify="required" lay-filter="aihao" lay-search>
+                    @foreach ($examinations as $examination)
+                        <option value="{{ $examination->id }}">{{ '[ID:'.$examination->id.'] '.$examination->description }}</option>
+                    @endforeach
+                    </select>
                   </div>
                 </div>
               </div>
 
 
               <div class="layui-row layui-col-space10 layui-form-item">
-                <div class="layui-col-lg6">
-                  <label class="layui-form-label">总分：</label>
-                  <div class="layui-input-block">
-                    <input type="number" name="total_score" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                 <div class="layui-col-lg6">
+                  <label class="layui-form-label">账号：</label>
+                   @foreach ($student_accounts as $account)
+                   <div class="layui-input-block">
+                   <input type="checkbox" name="accounts[]" title="{{ '[ID:'.$account->id.']'.$account->name }}" lay-skin="primary" value="{{ $account->id }}">
                   </div>
-                </div>
-              </div>
-
-
-              <div class="layui-row layui-col-space10 layui-form-item">
-                <div class="layui-col-lg6">
-                  <label class="layui-form-label">考试ID：</label>
-                  <div class="layui-input-block">
-                    <input type="number" name="examination_id" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="layui-row layui-col-space10 layui-form-item">
-                <div class="layui-col-lg6">
-                  <label class="layui-form-label">账号ID：</label>
-                  <div class="layui-input-block">
-                    <input type="number" name="account_id" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
-                  </div>
-                </div>
+                   @endforeach
+                 </div>
               </div>
 
               <div class="layui-form-item">

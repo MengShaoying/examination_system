@@ -9,6 +9,13 @@ structs:
         display_name: 标题
         description: 标题
         allow_null: false
+    random_question_count:
+        type: int(11)
+        format: ~
+        format_description: ~
+        display_name: 随机选题数量
+        description: 随机选题数量
+        allow_null: false
 relationships: []
 snaps: []
 ...

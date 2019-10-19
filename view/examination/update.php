@@ -19,44 +19,56 @@
           <div class="layui-card-body">
             <form class="layui-form" action="" method="POST" lay-filter="component-form-element">
 
-
               <div class="layui-row layui-col-space10 layui-form-item">
                 <div class="layui-col-lg6">
-                  <label class="layui-form-label">最早考试开始时间：</label>
+                  <label class="layui-form-label">试卷模版：</label>
                   <div class="layui-input-block">
-                    <input type="text" name="early_examination_start_time" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value='{{ $examination->early_examination_start_time }}'>
+
+                    <select name="paper_template_id" lay-verify="required" lay-filter="aihao" lay-search>
+                    @foreach ($paper_templates as $paper_template)
+                        <option value="{{ $paper_template->id }}" {{ $paper_template->id === $examination->paper_template_id?'selected':'' }}>{{ '[ID:'.$paper_template->id.'] '.$paper_template->title }}</option>
+                    @endforeach
+                    </select>
                   </div>
                 </div>
               </div>
 
-
               <div class="layui-row layui-col-space10 layui-form-item">
                 <div class="layui-col-lg6">
-                  <label class="layui-form-label">最晚考试开始时间：</label>
+                  <label class="layui-form-label">开考时间：</label>
                   <div class="layui-input-block">
-                    <input type="text" name="last_examination_start_time" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value='{{ $examination->last_examination_start_time }}'>
+                    <input type="text" class="layui-input" name="examination_start_time_range" id="examination_start_time_range" placeholder=" ~ " value="{{ implode_examination_start_time_rannge($examination) }}">
                   </div>
                 </div>
               </div>
 
+              <div class="layui-row layui-col-space10 layui-form-item">
+                <div class="layui-col-lg6">
+                  <label class="layui-form-label">持续秒数：</label>
+                  <div class="layui-input-block">
+                    <input type="number" name="last_second" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="{{ $examination->last_second }}">
+                  </div>
+                </div>
+              </div>
 
               <div class="layui-row layui-col-space10 layui-form-item">
                 <div class="layui-col-lg6">
                   <label class="layui-form-label">考试说明：</label>
                   <div class="layui-input-block">
-                    <input type="text" name="description" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value='{{ $examination->description }}'>
+                    <textarea name="description" placeholder="" class="layui-textarea">{{ $examination->description }}</textarea>
                   </div>
                 </div>
               </div>
 
-
               <div class="layui-row layui-col-space10 layui-form-item">
-                <div class="layui-col-lg6">
-                  <label class="layui-form-label">试卷模版ID：</label>
-                  <div class="layui-input-block">
-                    <input type="number" name="paper_template_id" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value='{{ $examination->paper_template_id }}'>
+                 <div class="layui-col-lg6">
+                  <label class="layui-form-label">发卷：</label>
+                   @foreach ($student_accounts as $account)
+                   <div class="layui-input-block">
+                   <input type="checkbox" name="accounts[]" title="{{ '[ID:'.$account->id.']'.$account->name }}" lay-skin="primary" value="{{ $account->id }}" {{ isset($checked_accounts[$account->id])?'checked':'' }}>
                   </div>
-                </div>
+                   @endforeach
+                 </div>
               </div>
 
               <div class="layui-form-item">
@@ -78,10 +90,11 @@
     base: '/layuiadmin/'
   }).extend({
     index: 'lib/index'
-  }).use(['index', 'form'], function(){
+  }).use(['index', 'form', 'laydate'], function(){
     var $ = layui.$
     ,admin = layui.admin
     ,element = layui.element
+    ,laydate = layui.laydate
     ,form = layui.form;
     
     form.render(null, 'component-form-element');
@@ -90,6 +103,12 @@
     form.on('submit(component-form-element)', function(data){
       return true;
     });
+
+    laydate.render({
+      elem: '#examination_start_time_range'
+      ,range: '~'
+    });
+
   });
   </script>
 </body>
